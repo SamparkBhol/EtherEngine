@@ -1,0 +1,116 @@
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 315 100% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 195 100% 60%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 120 100% 60%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 315 100% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Orbitron', monospace;
+  }
+}
+
+@layer utilities {
+  .neon-text {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      0 0 20px currentColor;
+  }
+  
+  .neon-border {
+    box-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor,
+      inset 0 0 5px currentColor;
+  }
+  
+  .pixel-corners {
+    clip-path: polygon(
+      0 8px, 8px 0, calc(100% - 8px) 0, 100% 8px,
+      100% calc(100% - 8px), calc(100% - 8px) 100%,
+      8px 100%, 0 calc(100% - 8px)
+    );
+  }
+  
+  .scanlines {
+    background-image: 
+      linear-gradient(
+        transparent 50%,
+        rgba(0, 255, 0, 0.03) 50%
+      );
+    background-size: 100% 4px;
+  }
+  
+  .glitch {
+    animation: glitch 2s infinite;
+  }
+  
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+  }
+  
+  .marquee {
+    animation: marquee 20s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  
+  .pulse-neon {
+    animation: pulse-neon 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse-neon {
+    from {
+      text-shadow: 
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 15px currentColor,
+        0 0 20px currentColor;
+    }
+    to {
+      text-shadow: 
+        0 0 2px currentColor,
+        0 0 5px currentColor,
+        0 0 8px currentColor,
+        0 0 12px currentColor;
+    }
+  }
+}
